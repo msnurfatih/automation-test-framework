@@ -1,0 +1,55 @@
+
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.20.1'
+    testImplementation 'io.cucumber:cucumber-junit:7.20.1'
+
+    // JUnit 4: runner untuk Cucumber
+    testImplementation 'junit:junit:4.13.2'
+
+    // Web UI Automation
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.27.0'
+
+    // API Automation
+    testImplementation 'io.rest-assured:rest-assured:5.5.0'
+
+    // Assertions tambahan
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+}
+
+test {
+    useJUnit()
+}
+
+
+tasks.register('webTest', Test) {
+    useJUnit()
+
+    include '**/WebTestRunner.class'
+
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+    }
+}
+
+tasks.register('apiTest', Test) {
+    useJUnit()
+
+    include '**/ApiTestRunner.class'
+
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+        showStandardStreams = true
+    }
+}
