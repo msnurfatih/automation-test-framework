@@ -58,21 +58,32 @@ automation-test-framework/
 └── settings.gradle
 ```
 
+
 ## Automated Test Scenarios
 
 ### API Testing
 
-The API test scenarios cover:
-- Get list of tags.
-- Get user by ID.
-- Create a new user.
-- Update an existing user.
+The API automation tests cover five scenarios:
+
+1. Get list of tags — verifies the tags endpoint and response.
+2. Get user by ID — verifies retrieval of an existing user.
+3. Create a new user — verifies user creation and the returned user ID.
+4. Update an existing user — verifies updating user information.
+5. Get user with invalid ID — negative test case that verifies the API rejects an invalid user ID.
+
+API tests use Cucumber, Gherkin, and Rest Assured.
 
 ### Web UI Testing
 
-The Web UI test checks whether the DemoBlaze homepage opens and its page title contains the expected text.
+The Web UI automation tests cover five scenarios:
 
-The Web UI tests use the Page Object Model (POM) to separate page-related operations from Cucumber step definitions.
+1. Open the DemoBlaze homepage — verifies the homepage title.
+2. View product categories — verifies that the Phones category is displayed.
+3. View product details — verifies that product details can be opened.
+4. Add a product to the cart — verifies that a product can be added to the shopping cart.
+5. Complete checkout end-to-end — selects a product, adds it to the cart, enters purchase information, and verifies the purchase confirmation.
+
+Web UI tests use Selenium WebDriver and Cucumber. The Page Object Model (POM) separates page interactions from Cucumber step definitions.
 
 ## Prerequisites
 
