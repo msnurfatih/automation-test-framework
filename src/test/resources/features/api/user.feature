@@ -17,3 +17,9 @@ Feature: DummyAPI User
     Given the DummyAPI request is configured
     When the user updates a user by ID "60d0fe4f5311236168a109f6" with name "QA Updated User"
     Then the user update response status code should be 200
+
+
+  Scenario: Get user with invalid ID
+    Given the DummyAPI request is configured
+    When the user requests a user by ID "invalid-user-id"
+    Then the user API response status code should be 400
